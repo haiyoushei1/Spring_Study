@@ -1,0 +1,5 @@
+问题1：
+如果不使用@Import，在CDPlayerConfig中无法获取其他配置类的bean。
+猜测：@Bean形式的DI与@AutoWired不同，@Bean形式，只能与本配置类以及@Import的配置类声明的bean进行注入;@AutoWired直接在整个容器中寻找注入？
+问题2：
+Autowired在构造器和变量的区别
