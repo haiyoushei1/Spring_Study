@@ -3,29 +3,25 @@ package Java_Create_Bean;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-
-import static org.junit.Assert.assertNotNull;
-
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = CDPlayerConfig.class)
-
-//测试的时候变量一定要加@AutoWired
-
-public class CDPlayerTest {
+@ContextConfiguration(classes = TrackCounterConfig.class)
+public class TrackTest {
     @Autowired
+    @Qualifier("track")
     private CompactDisc cd;
+
     @Autowired
-    private CDPlayer cdPlayer;
+    private TrackCounter counter;
 
     @Test
-    public void cdShouldNotBeNull(){
-        assertNotNull(cd);
+    public void test(){
         cd.play(1);
-        assertNotNull(cdPlayer);
-        cdPlayer.play();
+        cd.play(1);
+        cd.play(2);
+        System.out.println(counter.getPlayCount(1));
     }
-
 }
